@@ -1,4 +1,4 @@
-# graphql-mssql
+# ba-graphql
 
 Microsoft SQL Server
   Run the script found under ./dbscript on your test sqlserver
