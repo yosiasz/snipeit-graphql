@@ -11,10 +11,10 @@ mssql
   * https://www.npmjs.com/package/mssql
   * https://github.com/tediousjs/node-mssql
 
-```git pull this repo
+git pull this repo
 
 cd to ba-graphql
 
 npm ci
 
-nodemon server.js```
+nodemon server.js
