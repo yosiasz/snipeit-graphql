@@ -18,3 +18,5 @@ cd to ba-graphql
 npm ci
 
 nodemon server.js
+
+![alt text](./graphql.png)
