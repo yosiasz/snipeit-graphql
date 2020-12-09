@@ -1,4 +1,4 @@
-use graphql
+use BuilderAssistant_202010311927
 go
 
 if exists(select 1 from sys.procedures where name = 'projects_sp')
@@ -24,10 +24,10 @@ if exists(select 1 from sys.procedures where name = 'projects_sp')
 		  ,[ProjectCategoryCode]
 		  ,[ProjectStatusNote]
 		  --,[EstimatedStartDate]
-		  ,[ActualStartDate]
+		  --,[ActualStartDate]
 		  ,[PermitDate]
 		  --,[EstimatedServiceYearCompletion]
-		  ,[ActualCompletionDate]
+		  --,[ActualCompletionDate]
 		  ,[TimeZone]
 		  ,[DisplayLocation]
 		  ,[SyncKey]
@@ -46,11 +46,11 @@ if exists(select 1 from sys.procedures where name = 'projects_sp')
 		  ,[HubLdcEntityPrimaryGuid]
 		  ,[HubLdcEntitySecondaryGuid]
 		  ,DomainId
-	 FROM BuilderAssistant_202003070816.[dbo].[project] p
+	 FROM [dbo].[project] p
 	 where @projectId is null or ProjectId = @projectId
 
 	end
 	go
 
-	grant execute on dbo.projects_sp to graphql
+	grant execute on dbo.projects_sp to ba_server
 	go

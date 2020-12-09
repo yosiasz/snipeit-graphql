@@ -20,6 +20,6 @@ app.use('/domain-service/graph', graphqlHTTP({
     graphiql:true
 }));
 
-app.listen(4000, () => {
-    console.log('Server is running on port 4000..');
+app.listen(4200, () => {
+    console.log('ba-graphql is running on port http://localhost:4200/graphql');
 });

@@ -1,9 +1,9 @@
  module.exports = {
   "sqldb": {
-      user: 'graphql',
-      password: 'graphql',
+      user: 'ba_server',
+      password: 'ba_server',
       server: 'localhost', 
-      database: 'graphql',
+      database: 'BuilderAssistant_202010311927',
       port: 1433
   }
 }  ;

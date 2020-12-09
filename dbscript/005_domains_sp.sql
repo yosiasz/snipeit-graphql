@@ -1,4 +1,4 @@
-use graphql
+use BuilderAssistant_202010311927
 go
 
 if exists(select 1 from sys.procedures where name = 'domains_sp')
@@ -15,7 +15,6 @@ if exists(select 1 from sys.procedures where name = 'domains_sp')
 	begin
 		SELECT [DomainId]
 			  ,[Name]
-			  ,[BccEmailAddress]
 			  ,[TsdEmailAddress]
 			  ,[CreatorId]
 			  ,[DateCreated]
@@ -25,16 +24,15 @@ if exists(select 1 from sys.procedures where name = 'domains_sp')
 			  ,[LocalBranchId]
 			  ,[AppLanguageCode]
 			  ,[AppLocaleCode]
-			  ,[BadgeOffset]
 			  ,[Signature]
 			  ,[IsActive]
 			  ,[BranchGuid]
 			  ,[SyncHubPersonData]
 			  ,[NewApplicationDate]
-		  FROM BuilderAssistant_202003070816.[dbo].[Domain]
+		  FROM [dbo].[Domain]
 		  where @domainId is null or DomainId = @domainId
 	end
 	go
 
-	grant execute on dbo.domains_sp to graphql
+	grant execute on dbo.domains_sp to [ba_server]
 	go
