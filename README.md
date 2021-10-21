@@ -16,4 +16,4 @@ npm i
 npm start
 or npm run dev (using nodemon)
 
-![alt text](./graphql.png)
+![alt text](./snipeit-graphql.png)
