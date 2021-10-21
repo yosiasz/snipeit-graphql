@@ -1,7 +1,5 @@
 const graphql = require('graphql');
 
-const { getDomains} = require('../queries/queries');
-
 //destructure
 const {
     GraphQLObjectType,
@@ -10,30 +8,15 @@ const {
     GraphQLList,
 } = graphql;
 
-const DomainType = new GraphQLObjectType({
-    name: 'Domains',
+const AssetType = new GraphQLObjectType({
+    name: 'Assets',
     fields:() => ({
-        DomainId: {type: GraphQLID},
-        Name: {type:GraphQLString},
-        BranchGuid : {type:GraphQLString},
-    })
-});
-
-//project type
-const ProjectType = new GraphQLObjectType({
-    name: 'Projects',
-    fields:() => ({
-        ProjectId: {type: GraphQLID},
-        Name: {type:GraphQLString},
-        DomainId: {type: GraphQLID},
-        domain: {
-            type: DomainType,
-            resolve: (parent, args) => getDomains(parent.DomainId)
-        }
+        id: {type: GraphQLID},
+        name: {type:GraphQLString},
+        asset_tag: {type:GraphQLString},
     })
 });
 
 module.exports = {
-    DomainType: DomainType,
-    ProjectType: ProjectType
+    AssetType: AssetType
 };

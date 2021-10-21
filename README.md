@@ -1,22 +1,19 @@
-# ba-graphql
-
-Microsoft SQL Server
-  Run the script found under ./dbscript on your test sqlserver
+# snipeit-graphql
 
 graphql 
   * https://graphql.org/ 
   * https://github.com/graphql/graphql-js
   
-mssql 
-  * https://www.npmjs.com/package/mssql
-  * https://github.com/tediousjs/node-mssql
+mysql2 
+  * https://www.npmjs.com/package/mysql2
 
-git pull this repo
+git clone this repo
 
-cd to ba-graphql
+cd to snipeit-graphql
 
-npm ci
+npm i
 
-nodemon server.js
+npm start
+or npm run dev (using nodemon)
 
 ![alt text](./graphql.png)

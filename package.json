@@ -1,20 +1,25 @@
 {
-  "name": "graphql-mssql",
+  "name": "snipeit-mssql",
   "version": "1.0.0",
-  "description": "GraphQL with Microsoft SQL Server backend",
+  "description": "Snipeit GraphQL endpoint",
   "main": "server.js",
   "scripts": {
-    "dev:server": "nodemon server.js",
-    "start": "node server.js"
+    "dev": "nodemon ./src/server.js",
+    "start": "node ./src/server.js"
   },
   "author": "Josiah Solomon",
   "license": "ISC",
   "dependencies": {
     "core-js": "^3.6.4",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-graphql": "^0.7.1",
     "graphql": "^14.6.0",
-    "mssql": "^6.2.0",
-    "nodemon": "^1.18.9"
+    "https": "^1.0.0",
+    "mysql2": "^2.3.2"
+  },
+  "devDependencies": {
+    "fs": "0.0.1-security",
+    "nodemon": "^1.19.4"
   }
 }

@@ -1,9 +1,8 @@
 const graphql = require('graphql');
-const {getDomainById, getDomains, getProjects} = require('../queries/queries');
-const {DomainType, ProjectType} = require('../types/types');
+const { getAssets } = require('../queries/queries');
+const { AssetType } = require('../types/types');
 
-let projects = [];
-let domains = [];
+let assets = [];
 
 const {
     GraphQLObjectType,
@@ -20,23 +19,13 @@ const {
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields:{
-        projects:{
-            type: GraphQLList(ProjectType),
-            args:{
-                projectid:{type:GraphQLInt}
-             },            
+        assets:{
+            type: GraphQLList(AssetType),
             resolve(parentValue, args){
-                projects = getProjects(args.projectid);   
-                return projects; 
+                assets = getAssets();
+                return assets;
             }
-        },
-        domains:{
-            type: GraphQLList(DomainType),
-            resolve(parentValue, args){
-                domains = getDomains(args.domainId);  
-                return domains;
-            }
-        }           
+        }                  
     }
 
 });

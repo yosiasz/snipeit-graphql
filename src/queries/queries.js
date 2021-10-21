@@ -1,75 +1,20 @@
-const graphql = require('graphql');
-const sql = require('mssql');
+const mysql = require('mysql2/promise');
+const config = require('../config/config');
 
-
-const config = require('../server/config.js');
-
-async function getDomainById (domainId){
+async function getAssets () {
     try {
 
-        let pool = await sql.connect(config.sqldb)
-        let result = await pool.request()
-        .input('domainId', sql.Int, domainId)                            
-        .execute('dbo.domains_sp')
+        const connection = await mysql.createConnection(config.snipeit);
+        const [results, ] = await connection.execute('select id, name, asset_tag from assets LIMIT 2');
         
-        sql.close();
-        pool.close();
-        
-        domains = result.recordsets[0]
+        assets = results
 
+        return assets
     } catch (err) {
         console.dir(err);
-        sql.close();
     }    
-                
-    return domains[0]; 
 }
-
-async function getDomains (domainId) {
-    try {
-        let pool = await sql.connect(config.sqldb)
-        let result = await pool.request()
-        .input('domainId', sql.Int, domainId)                            
-        .execute('dbo.domains_sp')
-
-        domains = result.recordsets[0]
-
-    } catch (err) {
-        console.dir(err);
-        sql.close();
-    }
-
-    if (domainId) {
-        return domains[0];
-    }
-    else {
-        return domains;
-    }
-    
-}
-
-async function getProjects (productid) {
-    try {
-        let pool = await sql.connect(config.sqldb)
-        let result = await pool.request()
-        .input('projectid', sql.Int, productid)                            
-        .execute('projects_sp')
-        
-        projects = result.recordsets[0]
-
-    } catch (err) {
-        console.dir(err);
-        sql.close();
-        pool.close();
-        // ... error checks
-    }
-    return projects;  
-};
 
 module.exports = {
-
-    getProjects : getProjects,
-    getDomainById :  getDomainById,
-    getDomains : getDomains,
-
+    getAssets : getAssets
 }
